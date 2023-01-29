@@ -4,7 +4,7 @@ title: "Jekyll을 이용해 간단하게 Github 블로그를 만들어보자!"
 date: 2023-01-29 14:22:18 +0900
 image: 12.jpg
 tags: [jekyll, docs]
-categories: jekyll
+categories: blog
 ---
 
 <div style = 'width : 48vw; display : flex; align-items: center; flex-direction : column; margin-top : 3vh'>
