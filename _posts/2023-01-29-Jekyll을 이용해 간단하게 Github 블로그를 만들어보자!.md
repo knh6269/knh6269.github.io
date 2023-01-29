@@ -5,6 +5,10 @@ date: 2023-01-29 14:22:18 +0900
 image: 12.jpg
 tags: [jekyll, docs]
 categories: blog
+lastmode: 2023-01-29 14:22:18 +0900
+sitemap:
+  changefreq: daily
+  priority : 1.0
 ---
 
 <div style = 'width : 48vw; display : flex; align-items: center; flex-direction : column; margin-top : 3vh'>
