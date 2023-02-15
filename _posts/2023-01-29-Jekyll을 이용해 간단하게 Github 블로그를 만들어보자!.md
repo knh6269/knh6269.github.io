@@ -2,7 +2,7 @@
 layout: post
 title: "Jekyll을 이용해 간단하게 Github 블로그를 만들어보자!"
 date: 2023-01-29 14:22:18 +0900
-image: 12.jpg
+image: jekyll.jpg
 tags: [jekyll, docs]
 categories: blog
 ---
