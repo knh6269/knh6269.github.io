@@ -20,7 +20,7 @@ timezone: Asia/Seoul
 
 title: 낙라이브러리                          # the main title
 
-tagline: 프론트엔드를 지망하는 학생입니다 잘못된 내용이 있으면 많은 지적 부탁드립니다!   # it will display as the sub-title
+tagline: 프론트엔드를 지망하는 학생입니다 잘못된 내용이 있으면 많은 지적 부탁드립니다!!   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
   A minimal, responsive, and powerful Jekyll theme for presenting professional writing.
@@ -41,7 +41,7 @@ social:
   email: knh6269@gmail.com            # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/username      # change to your twitter homepage
+    # change to your twitter homepage
     - https://github.com/knh6269       # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
