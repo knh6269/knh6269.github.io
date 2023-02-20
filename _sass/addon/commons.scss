@@ -730,7 +730,7 @@ $sidebar-display: "sidebar-display";
       -webkit-transform: translateZ(0);
       transform: translateZ(0); /* fixed the zoom in Safari */
       transition: border-color 0.35s ease-in-out;
-
+      
       &:hover {
         border-color: white;
       }
