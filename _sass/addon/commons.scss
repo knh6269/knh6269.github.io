@@ -7,10 +7,28 @@ html {
     &:not([data-mode]),
     &[data-mode="light"] {
       @include light-scheme;
+      .click-box {
+        position: absolute;
+        z-index: 9999;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: rgb(1, 1, 79);
+        pointer-events: fill;
+      }
     }
 
     &[data-mode="dark"] {
       @include dark-scheme;
+      .click-box {
+        position: absolute;
+        z-index: 9999;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: white;
+        pointer-events: fill;
+      }
     }
   }
 
@@ -18,6 +36,7 @@ html {
     &:not([data-mode]),
     &[data-mode="dark"] {
       @include dark-scheme;
+     
     }
 
     &[data-mode="light"] {

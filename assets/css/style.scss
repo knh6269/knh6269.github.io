@@ -10,3 +10,26 @@ $tab-count: {{ site.tabs | size | plus: 1 }}; // plus 1 for home tab
 @import "{{ site.theme }}";
 
 /* append your custom style below */
+body {
+  cursor: url(https://cur.cursors-4u.net/nature/nat-5/nat425.ani), url(https://cur.cursors-4u.net/nature/nat-5/nat425.png), auto !important;
+}
+
+// .click-box {
+//   position: absolute;
+//   z-index: 9999;
+//   width: 30px;
+//   height: 30px;
+//   border-radius: 50%;
+//   background-color: rgb(5, 175, 248);
+//   pointer-events: fill;
+// }
+
+@keyframes click {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
