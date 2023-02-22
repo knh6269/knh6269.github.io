@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "react native 프로젝트 생성하기(2023년, window 기준)"
-date: 2023-01-29 14:22:18 +0900
+date: 2023-02-19 14:22:18 +0900
 tags: [react-native, webview]
 categories: react-native
 ---
