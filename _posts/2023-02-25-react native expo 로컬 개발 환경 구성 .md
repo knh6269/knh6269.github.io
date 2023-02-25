@@ -92,7 +92,7 @@ expo install react-native-webview
 ```
 
 ## App.js 다 지우고 해당 코드로 수정 
-``` javascript
+```
 import React from 'react';
 import { SafeAreaView} from "react-native";
 import { WebView } from 'react-native-webview';
