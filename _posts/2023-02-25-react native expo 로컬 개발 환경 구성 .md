@@ -92,24 +92,9 @@ expo install react-native-webview
 ```
 
 ## App.js 다 지우고 해당 코드로 수정 
-```
-import React from 'react';
-import { SafeAreaView} from "react-native";
-import { WebView } from 'react-native-webview';
-
-const App = () => {
-  return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <WebView 
-        source = {{ uri : 'https://google.com'}} 
-        originWhitelist={['*']}
-      />
-    </SafeAreaView>
-  );
-}
-
-export default App
-```
+<div>
+  <img src= 'https://user-images.githubusercontent.com/44117975/221343962-73c5d4ce-c112-4af4-8eed-81d374a72d4b.png' alt = 'img'/>
+</div>
 여기서 `구글 화면`이 제대로 나오면 성공입니다.<br/>
 이제 `localhost`로 작업을 하기위한 환경 설정을 위해 `핸드폰의 와이파이`와 `노트북의 와이파이`를 일치시킵니다.
 그리고 react에서 npm start를 했을때 적혀있는 `On Your Network` 코드를 `WebView`의 `uri`에 입력합니다.<br/>
