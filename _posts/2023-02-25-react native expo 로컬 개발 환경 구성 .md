@@ -101,7 +101,7 @@ const App = () => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <WebView 
-        source={{ uri : 'https://google.com'}} 
+        source = {{ uri : 'https://google.com'}} 
         originWhitelist={['*']}
       />
     </SafeAreaView>
