@@ -131,7 +131,7 @@ Description: The request timed out.
 </div>
 
 # 마치며
-맥북이 있었다면 Xcode로 이렇게 힘들지 않았을텐데....
+맥북이 있었다면 Xcode로 이렇게 힘들지 않았을텐데...
 
 
 
