@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "개발하면서 생긴 궁금증"
+title: "react-query"
 date: 2023-04-09 14:10:18 +0900
 tags: [react query, develop]
 categories: react query
