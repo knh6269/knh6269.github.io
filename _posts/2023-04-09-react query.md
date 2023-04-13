@@ -13,7 +13,9 @@ react-query에 대해 정리해보는 글
 
 # react-query란?
 `react-query` 서버의 값을 클라이언트에 가져오는 fetch, 캐싱, 에러처리 등의 비동기 과정을 편하게 해주는 라이브러리
-
+보통 redux를 사용해 상태관리를 하는 경우 서버 관련 로직을 클라이언트 state와  함께 사용하게 되는 경우가 많다
+이러한 경우 보일러 플레이트가 너무 커지는데 이러한 현상을 방지하기 위해 서버관련 로직을 redux에서 분리시킨다
+이때 사용되는게 `react-query`이다
 
 ---
 
@@ -75,9 +77,9 @@ if (status === 'error') return `오류 이유 : ${error.message}`
 
 - `쿼리키` 
     - 유니크한 키
-    - 캐시를 저장하는데 사용 
+    - `캐시`를 저장하는데 사용 
     - 동일한 쿼리에 여러 번 요청하는것을 방지
-    - react-query 3.14.0 버전 이상에서는 쿼리키를 배열 형태로 전달하는 것을 권장하고 있다. 
+    - react-query v4 버전 이상에서는 쿼리키를 `배열 형태`로 전달해야한다.
     - 배열을 전달 시 0번 배열은 '유니크한 키', 1번 배열은 props가 전달된다.
 - `쿼리함수` 
     - 데이터를 가져오는 역할을 하는 `비동기`함수 
@@ -91,13 +93,35 @@ if (status === 'error') return `오류 이유 : ${error.message}`
         - `false`로 설정하면 컴포넌트가 마운트 되어도 API 호출을 하지않는다.
     - `staleTime`
         - 캐시된 데이터가 만료되기 전에 허용되는 시간
+        - 데이터가 fresh에서 stale 상태로 변경되는데 걸리는 시간 (3000 : 3초)
         - 만료된 데이터가 있으면 API 호출을 시작 
         - 기본값 : 0
     - `cacheTime`
         - 캐시된 데이터를 유지할 시간
         - 이 시간이 지나면 캐시된 데이터가 삭제 
         - 기본값 : 5분
-
+    - `refetchOnMount`
+        - 데이터가 `stale` 상태일 경우, `mount`마다 `refetch`를 실행하는 옵션
+        - 기본값 : `true`
+    - `refetchOnWindowFocus`
+        - 데이터가 `stale`상태일 경우 `윈도우 포커싱`될 때마다 `refetch`를 실행하는 옵션
+        - 기본값 : `true`
+    - `refetchInterval`
+        - `시간`을 값으로 넣어주면 일정 시간마다 자동으로 `refetch`를 실행하는 옵션
+        - `polling`을 위해 사용 
+    - `refetchIntervalInBackground`
+        - 탭/창이 백그라운드에 있어도 `refetch`를 실행하는 옵션 
+        - `polling`을 위해 사용 
+    - `retry`
+        - 쿼리가 `실패`하면 `useQuery`를 일정 횟수만큼 `refetch`하는 옵션
+        - false : 재요청하지 않음
+        - ture : 무한 재요청
+        - 숫자 : 그 숫자만큼 재요청
+    - `select`
+        - 데이터의 일부를 변환하거나 선택이 가능 
+    - `keepPreviousData`
+        - 쿼리키가 변경되어 새로운 데이터를 요청하는 동안에도 마지막 data 값을 유지
+        - 캐싱 되지 않은 페이지를 가져올 때 깜빡거리는 현상을 방지할 수 있다.
 
 ---
 
@@ -149,5 +173,50 @@ const mutation = useMutation(postTodo, {
 
 ---
 
+# Refetching을 하는 경우
+data 가 `stale` 한 상태가 되었다고 판단되는 경우
+-  브라우저에 포커스가 들어왔을 경우 
+- 새로 마운트가 되었을 경우
+- 네트워크가 끊어졌다가 다시 연결된 경우
+
+---
+
+# 쿼리 무효화
+`ADD`, `DELETE` 후 수동적으로 `refetch`를 해줘야 화면에 보여진다.
+이러한 문제를 `Invalidation`을 사용하면 해결할 수 있다.
+```js
+
+ const { mutate, isLoading, isError, error } = useMutation(store, {
+    onSuccess: () => {
+        queryClient.invalidateQueries();
+        queryClient.invalidateQueries('store');
+    }
+  });
+```
+
+---
+
+# 이 글에서 사용된 다른 개념
+
+>컴포넌트 mount란?
+
+- 컴포넌트 생성부터, 최초 렌더링까지의 과정
+- 마운트될 때 
+    - props로 받은 값을 컴포넌트의 state로 설정할 때
+    - 컴포넌트가 나타났을때, 외부 API를 요청해야할 때
+    - 라이브러리를 사용할 때
+    - setInterval이나 setTimeout과 같은 작업을 할 때
+    <br/>
+
+>polling이란?
+
+- 일정한 주기를 가지고 서버와 응답을 주고받는 방식
+- `refetchInterval`, `refetchIntervalInBackground`을 이용해서 구현 가능
+
+---
+
 # 출처 
-https://kyounghwan01.github.io/blog/React/react-query/basic/
+
+<a href = 'https://kyounghwan01.github.io/blog/React/react-query/basic/'>https://kyounghwan01.github.io/blog/React/react-query/basic/</a>
+<br/>
+<a href = 'https://github.com/ssi02014/react-query-tutorial'>https://github.com/ssi02014/react-query-tutorial</a>
